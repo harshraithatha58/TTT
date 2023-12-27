@@ -41,8 +41,12 @@ boxes.forEach((box) => {
         checkWinner();
     })
 })
-
+let counter = 0;
 const checkWinner = () => {
+
+    if (counter == 9) {
+        alert("tie")
+    }
     for (let pattern of winPatterns) {
         val1 = boxes[pattern[0]].innerText
         val2 = boxes[pattern[1]].innerText
@@ -62,5 +66,17 @@ const checkWinner = () => {
                 window.location.href = "./index.html"
             }
         }
+    }
+    counter = 0;
+    boxes.forEach((box) => {
+        if (box.innerText !== "") {
+            console.log(box);
+            counter++;
+        }
+    });
+
+    if (counter === 9) {
+        alert("It's a tie!");
+        window.location.href = "./index.html";
     }
 }
