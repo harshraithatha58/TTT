@@ -32,13 +32,15 @@ boxes.forEach((box) => {
         if (turnO) {
             box.innerText = "O";
             turnO = false;
+            checkWinner();
         } else {
             box.innerText = "X";
             turnO = true;
+            checkWinner();
+
         }
         box.disabled = true;
         box.style.color = "#001514";
-        checkWinner();
     })
 })
 let counter = 0;
@@ -62,8 +64,10 @@ const checkWinner = () => {
                 for (let i = 0; i < 9; i++) {
                     boxes[i].disabled = true;
                 }
-                alert(`Winner is ${winner}`);
-                window.location.href = "./index.html"
+                setTimeout(()=>{
+                    alert(`Winner is ${winner}`);
+                    window.location.href = "./index.html"
+                },500)
             }
         }
     }
